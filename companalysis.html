@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Competitive Analysis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/d21aa4c3aa.js" crossorigin="anonymous"></script>
+    <style>
+        /* Assign full width inputs*/
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 40px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .fontpassword {
+            position: relative;
+        }
+
+        .fontpassword i{
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: gray;
+        }
+        @media screen and (max-width: 1024px) {
+            .desktop-only{
+               display: none;
+            }
+        }
+        .box {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            color: #4a4a4a;
+            display: block;
+            padding: 1.25rem;
+            border-width: 10px;
+        }
+        .custom-border{
+            background-color: #fff;
+            border-radius: 6px;
+            color: #4a4a4a;
+            display: inline-block;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            width: 100%;
+        }
+        .custom-bg{
+            background: rgb(211,217,220);
+            background: linear-gradient(0deg, rgba(211,217,220,1) 0%, rgba(216,104,176,1) 100%);
+        }
+        .custom-bg2{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(174,180,250,1) 100%);
+        }
+        .custom-bg3{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(226,158,159,1) 100%);
+        }
+        .custom-bg4{
+            background: rgb(235,188,160);
+            background: linear-gradient(0deg, rgba(235,188,160,1) 0%, rgba(208,166,253,1) 100%);
+        }
+        .w-100{
+            width:100%;
+        }
+        .h-100{
+            height:100%;
+        }
+        table {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          table-layout: fixed;
+        }
+
+        table caption {
+          font-size: 1.5em;
+          margin: .5em 0 .75em;
+        }
+
+        table tr {
+          border-bottom: 1px solid #ddd;
+          padding: .35em;
+        }
+
+        table th,
+        table td {
+          padding: .625em;
+        }
+
+        table th {
+          font-size: .85em;
+          letter-spacing: .1em;
+        }
+
+        @media screen and (max-width: 768px) {
+        .width-mobile{
+            width:100%;
+        }
+          table {
+            border: 2;
+          }
+
+          table caption {
+            font-size: 1.3em;
+          }
+
+          table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+          }
+
+          table tr {
+            border-bottom: 2px solid #abb1bf;
+            display: block;
+            margin-bottom: .625em;
+          }
+          table td {
+            border-bottom: 1px solid #abb1bf;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+          }
+          table td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            font-weight: 500 !important;
+          }
+
+          table td:last-child {
+            border-bottom: 0;
+          }
+        }
+        @media screen and (max-width: 1024px) {
+          .d-none{
+            display: none;
+          }
+        }
+        @media screen and (min-width: 1024px) {
+          .is-mobile-visible{
+            display: none;
+          }
+        }
+        .custom-bg-green {
+        background: linear-gradient(45deg, #4CAF50, #2E8B57);
+        }
+
+        .custom-bg-yellow {
+           background: linear-gradient(45deg, #FFFF00, #FFD700);
+        }
+
+        .custom-bg-red {
+         background: linear-gradient(45deg, #FF6347, #B22222);
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        .compare-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .dropdown-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+</a>
+
+<div class="p-2 navbar-menu is-mobile-visible" id="navMenu" style="">
+            <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-item has-dropdown is-active">
+                <a class="">
+                    Miynne Constantine
+                  <img src="">
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a href="{{url_for('dashboard')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7">
+                        <span class="fas fa-home pr-2"></span>
+                        <span class="is-size-7" >Dashboard</span>
+                    </a>
+                    <a  class="navbar-item p-4 is-size-7" style="background-color: #a0e4d1;;">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Adidas</span>
+                    </a>
+                    <a href="{{url_for('nike')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Nike</span>
+                    </a>
+                    <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                    </a>
+                    <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Categories Analysis</span>
+                    </a>
+                    <a  class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Aspects Analysis</span>
+                    </a>
+                    <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                        <span class="has-text-white" >Competitive Analysis</span>
+                    </a>
+                    <hr class="navbar-divider">
+                    <div class="navbar-item p-4">
+                        <a class="is-size-7">
+                            <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                            <span class="has-text-white" >Sign-out</span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </nav>
+        </div>
+
+<div class="columns m-0 p-0">
+    <div class="p-2 column is-2 d-none">
+        <aside class="menu">
+          <p class="menu-label">
+              <img src="">
+          </p>
+          <ul class="menu-list">
+              <li>
+                  <a href="{{url_for('intro')}}" class="box has-text-black navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-home pr-4"></span>
+                    <span class="has-text-white is-size-7" >Overview</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('dashboard')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-display pr-4"></span>
+                    <span class="has-text-white is-size-7" >Dashboard</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('adidas')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                    <span class="has-text-white  fas fa-regular fa-folder pr-4"></span>
+                    <span class="has-text-white is-size-7" >Adidas</span>
+                  </a>
+              </li>
+              <li>
+                  <a  href="{{url_for('nike')}}"  class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                    <span class=" has-text-white fas fa-regular fa-folder pr-4"></span>
+                    <span class=" has-text-white is-size-7" >Nike</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('puma')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                        <span class=" has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Puma</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('catanalysis')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white is-size-7" >Categories Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('aspanalysis')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white is-size-7" >Aspects Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a class="box has-text-black navbar-item p-4 m-0 is-size-7" style="background-color: #a0e4d1;;">
+                      <span class=" fas fa-square-poll-vertical pr-3"></span>
+                      <span class="is-size-7" >Competitive Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('twitter')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fa-brands fa-twitter pr-4"></span>
+                      <span class="has-text-white" >Tweets</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('analyzer')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                      <span class="has-text-white" >Analyze Text</span>
+                  </a>
+              </li>
+              <hr class="navbar-divider">
+              <li>
+                  <a href="{{url_for('home')}}" class="is-size-7">
+                      <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                      <span class="has-text-white" >Sign-out</span>
+                  </a>
+              </li>
+          </ul>
+        </aside>
+    </div>
+    <div class="column" style="background-image: url('static/white.jpg'); background-size: cover; background-position: center;">
+    <div class="py-1 px-5 is-flex is-justify-content-end is-align-items-center">
+        <div class="p-2"></div>
+    </div>
+
+    <div class="column is-full has-text-centered">
+        <div class="custom-border p-3 h-100 w-100">
+            <label class="has-text-weight-semibold has-text-black">
+                Select to Compare the Visualization of Sportswear Brands
+            </label>
+            <div class="compare-container has-text-black">
+                <div class="dropdown-section">
+                    <label for="brand1">Sportswear Brand 1</label>
+                    <select id="brand1" class="dropdown">
+                        <option value="Adidas">Adidas</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Puma">Puma</option>
+                    </select>
+                </div>
+                VS
+                <div class="dropdown-section has-text-black">
+                    <label for="brand2">Sportswear Brand 2</label>
+                    <select id="brand2" class="dropdown">
+                        <option value="Adidas">Adidas</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Puma">Puma</option>
+                    </select>
+                </div>
+            </div>
+            <button class="button is-primary is-rounded mt-3" onclick="updateCharts()">Compare</button>
+        </div>
+    </div>
+
+    <div class="columns is-multiline m-0 p-0">
+
+        <div class="column is-12 has-text-centered">
+        <div class="custom-border p-3">
+            <label class="has-text-weight-semibold has-text-black">
+                Word Cloud on Sportswear Brands
+            </label>
+            <div class="columns is-12">
+                <div class="column is-6">
+                    <img id="wordCloud1" src="static/.png" alt="Brand 1 Word Cloud" style="width: 100%; height: auto;">
+                    <p class="has-text-black is-size-7 has-text-centered has-text-weight-bold" id="wordCloudLabel1">Brand 1</p>
+                </div>
+                <div class="column is-6">
+                    <img id="wordCloud2" src="static/.png" alt="Brand 2 Word Cloud" style="width: 100%; height: auto;">
+                    <p class="has-text-black is-size-7 has-text-centered has-text-weight-bold" id="wordCloudLabel2">Brand 2</p>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="column is-6 has-text-centered">
+
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Distribution of Sentiment on Sportswear Brand
+                </label>
+                <div class="w-100 h-100">
+                    <div id="pieChart1" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6 has-text-centered">
+
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Distribution of Sentiment on Sportswear Brand
+                </label>
+                <div class="w-100 h-100">
+                    <div id="pieChart2" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6 has-text-centered">
+
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Total Sentiment of Sportswear Brands Based on Aspects
+                </label>
+                <div class="w-100 h-100">
+                    <div id="barChart1" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6 has-text-centered">
+
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Total Sentiment of Sportswear Brands Based on Aspects
+                </label>
+                <div class="w-100 h-100">
+                    <div id="barChart2" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-12 has-text-centered">
+
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Total Sentiment of Sportswear Brands Based on Category
+                </label>
+                <div class="w-100 h-100">
+                    <div id="barChart3" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-12 has-text-centered">
+
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Total Sentiment on Monthly Basis
+                </label>
+                <div class="w-100 h-100">
+                    <div id="lineChart1" style="height: 400px;"></div><!--Overall Sentiment Polarity-->
+                </div>
+                <div class="p-4"></div>
+                <div class="chart-title" id="titleLine2"></div>
+                <div class="w-100 h-100">
+                     <div id="lineChart2" style="height: 400px;"></div><!--Positive Sentiment Polarity-->
+                </div>
+                <div class="p-4"></div>
+                <div class="chart-title" id="titleLine3"></div>
+                 <div class="w-100 h-100">
+                      <div id="lineChart3" style="height: 400px;"></div><!--Neutral Sentiment Polarity-->
+                </div>
+                <div class="p-4"></div>
+                <div class="chart-title" id="titleLine4"></div>
+                <div class="w-100 h-100">
+                      <div id="lineChart4" style="height: 400px;"></div><!--Negative Sentiment Polarity-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<style>
+        .compare-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+        .dropdown-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dropdown {
+            margin: 10px 0;
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+
+            });
+        });
+
+    });
+
+    function updateChartTitles(brand1, brand2) {
+        document.getElementById('titleLine2').innerHTML = `<span style="font-weight: bolder;">Total <span style="color: green; font-weight: bolder;">Positive</span> Sentiment for ${brand1} vs ${brand2}</span>`;
+        document.getElementById('titleLine3').innerHTML = `<span style="font-weight: bolder;">Total <span style="color: #FFD700; font-weight: bolder;">Neutral</span> Sentiment for ${brand1} vs ${brand2}</span>`;
+        document.getElementById('titleLine4').innerHTML = `<span style="font-weight: bolder;">Total <span style="color: red; font-weight: bolder;">Negative</span> Sentiment for ${brand1} vs ${brand2}</span>`;
+    }
+
+
+    function updateCharts() {
+        const brand1 = document.getElementById('brand1').value;
+        const brand2 = document.getElementById('brand2').value;
+
+        // Update the word cloud images and labels based on the selected brands
+        document.getElementById('wordCloud1').src = `static/${brand1.toLowerCase()}_overall_wordcloud.png`;
+        document.getElementById('wordCloud1').alt = `${brand1} Word Cloud`;
+        document.getElementById('wordCloudLabel1').textContent = brand1;
+
+        document.getElementById('wordCloud2').src = `static/${brand2.toLowerCase()}_overall_wordcloud.png`;
+        document.getElementById('wordCloud2').alt = `${brand2} Word Cloud`;
+        document.getElementById('wordCloudLabel2').textContent = brand2;
+
+        fetch('/generate_charts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ brand1, brand2 }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data received:', data);  // Debugging log
+
+                updateChartTitles(brand1, brand2);
+
+                const pieData1 = data.pie.brand1;
+                const pieData2 = data.pie.brand2;
+
+                const barData1 = data.bar.brand1;
+                const barData2 = data.bar.brand2;
+
+                const barCategoryData1 = data.barcategory.brand1;
+                const barCategoryData2 = data.barcategory.brand2;
+
+                // Line Chart Data
+                const monthlyData1 = data.line.brand1.total;
+                const monthlyData2 = data.line.brand2.total;
+
+                const monthlyPositiveData1 = data.line.brand1.positive;
+                const monthlyPositiveData2 = data.line.brand2.positive;
+
+                const monthlyNeutralData1 = data.line.brand1.neutral;
+                const monthlyNeutralData2 = data.line.brand2.neutral;
+
+                const monthlyNegativeData1 = data.line.brand1.negative;
+                const monthlyNegativeData2 = data.line.brand2.negative;
+
+                console.log('Monthly Data 1:', monthlyData1);  // Debugging log
+                console.log('Monthly Data 2:', monthlyData2);  // Debugging log
+
+                const months = Object.keys({ ...monthlyData1, ...monthlyData2 }).sort();
+                const monthlySeries1 = months.map(month => monthlyData1[month] || 0);
+                const monthlySeries2 = months.map(month => monthlyData2[month] || 0);
+
+                const monthlyPositiveSeries1 = months.map(month => monthlyPositiveData1[month] || 0);
+                const monthlyPositiveSeries2 = months.map(month => monthlyPositiveData2[month] || 0);
+
+                const monthlyNeutralSeries1 = months.map(month => monthlyNeutralData1[month] || 0);
+                const monthlyNeutralSeries2 = months.map(month => monthlyNeutralData2[month] || 0);
+
+                const monthlyNegativeSeries1 = months.map(month => monthlyNegativeData1[month] || 0);
+                const monthlyNegativeSeries2 = months.map(month => monthlyNegativeData2[month] || 0);
+
+                const colorMap = {
+                    'Adidas': '#007bff', // Blue
+                    'Nike': '#6f42c1', // Purple
+                    'Puma': '#fd7e14' // Orange
+                };
+
+                const optionsPie1 = {
+                    series: [pieData1.Positive || 0, pieData1.Neutral || 0, pieData1.Negative || 0],
+                    chart: {
+                        type: 'pie',
+                        height: '100%'
+                    },
+                    labels: ['Positive', 'Neutral', 'Negative'],
+                    colors: ['#00E396', '#FEB019', '#FF4560'],
+                    title: {
+                        text: `${brand1} Sentiment Distribution`,
+                        align: 'center' // Center align the title text
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            colors: ['#00E396', '#FEB019', '#FF4560']
+                        }
+                    }
+                };
+
+                const optionsPie2 = {
+                    series: [pieData2.Positive || 0, pieData2.Neutral || 0, pieData2.Negative || 0],
+                    chart: {
+                        type: 'pie',
+                        height: '100%'
+                    },
+                    labels: ['Positive', 'Neutral', 'Negative'],
+                    colors: ['#00E396', '#FEB019', '#FF4560'],
+                    title: {
+                        text: `${brand2} Sentiment Distribution`,
+                        align: 'center' // Center align the title text
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            colors: ['#00E396', '#FEB019', '#FF4560']
+                        }
+                    }
+                };
+
+                const aspectLabels = [...new Set([...Object.keys(barData1), ...Object.keys(barData2)])];
+
+                const seriesBar1 = [
+                    {
+                        name: `${brand1} Positive`,
+                        data: aspectLabels.map(label => barData1[label]?.Positive || 0)
+                    },
+                    {
+                        name: `${brand1} Neutral`,
+                        data: aspectLabels.map(label => barData1[label]?.Neutral || 0)
+                    },
+                    {
+                        name: `${brand1} Negative`,
+                        data: aspectLabels.map(label => barData1[label]?.Negative || 0)
+                    }
+                ];
+
+                const seriesBar2 = [
+                    {
+                        name: `${brand2} Positive`,
+                        data: aspectLabels.map(label => barData2[label]?.Positive || 0)
+                    },
+                    {
+                        name: `${brand2} Neutral`,
+                        data: aspectLabels.map(label => barData2[label]?.Neutral || 0)
+                    },
+                    {
+                        name: `${brand2} Negative`,
+                        data: aspectLabels.map(label => barData2[label]?.Negative || 0)
+                    }
+                ];
+
+                const optionsBar1 = {
+                    series: seriesBar1,
+                    chart: {
+                        type: 'bar',
+                        height: '100%',
+                        stacked: true
+                    },
+                    xaxis: {
+                        categories: aspectLabels,
+                        title: {
+                        text: 'Aspects'
+                    }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    colors: ['#00E396', '#FEB019', '#FF4560'],
+                    title: {
+                        text: `${brand1} Sentiment by Aspect`,
+                        align: 'center' // Center align the title text
+                    }
+                };
+
+                const optionsBar2 = {
+                    series: seriesBar2,
+                    chart: {
+                        type: 'bar',
+                        height: '100%',
+                        stacked: true
+                    },
+                    xaxis: {
+                        categories: aspectLabels,
+                        title: {
+                        text: 'Aspects'
+                    }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    colors: ['#00E396', '#FEB019', '#FF4560'],
+                    title: {
+                        text: `${brand2} Sentiment by Aspect`,
+                        align: 'center' // Center align the title text
+                    }
+                };
+
+                const categoryLabels = [...new Set([...Object.keys(barCategoryData1), ...Object.keys(barCategoryData2)])];
+
+                const seriesBar3 = [
+                    {
+                        name: `${brand1} Positive`,
+                        data: categoryLabels.map(label => barCategoryData1[label]?.Positive || 0)
+                    },
+                    {
+                        name: `${brand1} Neutral`,
+                        data: categoryLabels.map(label => barCategoryData1[label]?.Neutral || 0)
+                    },
+                    {
+                        name: `${brand1} Negative`,
+                        data: categoryLabels.map(label => barCategoryData1[label]?.Negative || 0)
+                    },
+                    {
+                        name: `${brand2} Positive`,
+                        data: categoryLabels.map(label => barCategoryData2[label]?.Positive || 0)
+                    },
+                    {
+                        name: `${brand2} Neutral`,
+                        data: categoryLabels.map(label => barCategoryData2[label]?.Neutral || 0)
+                    },
+                    {
+                        name: `${brand2} Negative`,
+                        data: categoryLabels.map(label => barCategoryData2[label]?.Negative || 0)
+                    }
+                ];
+
+                const optionsBar3 = {
+                    series: seriesBar3,
+                    chart: {
+                        type: 'bar',
+                        height: '100%'
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: false,
+                            stacked: true,
+                            dataLabels: {
+                                position: 'top', // Position the data labels on top of the bars
+                            },
+                        }
+                    },
+                    xaxis: {
+                        categories: categoryLabels,
+                        labels: {
+                            rotate: -45,
+                            offsetY: 5,
+                            style: {
+                                fontSize: '12px'
+                            }
+                        },
+                        title: {
+                            text: 'Sportswear Categories'
+                        }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    colors: ['#00E396', '#FEB019', '#FF4560'],
+                    title: {
+                        text: `${brand1} vs ${brand2} Total Sentiment Comparison by Category`,
+                        align: 'center' // Center align the title text
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        offsetY: -20, // Adjust the vertical position of the labels
+                        style: {
+                            fontSize: '12px',
+                            fontWeight: 'bold',
+                            colors: ['#333']
+                        },
+                        formatter: function (val, opts) {
+                            return opts.w.globals.seriesNames[opts.seriesIndex].split(' ')[0]; // Extracting the brand name from the series
+                        }
+                    }
+                };
+
+                const optionsLine1 = {
+                    series: [
+                        {
+                            name: brand1,
+                            data: monthlySeries1,
+                            color: colorMap[brand1]
+                        },
+                        {
+                            name: brand2,
+                            data: monthlySeries2,
+                            color: colorMap[brand2]
+                        }
+                    ],
+                    chart: {
+                        type: 'line',
+                        height: '100%'
+                    },
+                    xaxis: {
+                        categories: months,
+                        title: {
+                            text: 'Year-Month'
+                        }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    stroke: {
+                        curve: 'smooth'
+                    },
+                    title: {
+                        text: `Overall Monthly Sentiment Count for ${brand1} vs ${brand2}`,
+                        align: 'center'
+                    }
+                };
+
+                const optionsLine2 = {
+                    series: [
+                        {
+                            name: brand1,
+                            data: monthlyPositiveSeries1,
+                            color: colorMap[brand1]
+                        },
+                        {
+                            name: brand2,
+                            data: monthlyPositiveSeries2,
+                            color: colorMap[brand2]
+                        }
+                    ],
+                    chart: {
+                        type: 'line',
+                        height: '100%'
+                    },
+                    xaxis: {
+                        categories: months,
+                        title: {
+                            text: 'Year-Month'
+                        }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    stroke: {
+                        curve: 'smooth'
+                    }
+                };
+
+                const optionsLine3 = {
+                    series: [
+                        {
+                            name: brand1,
+                            data: monthlyNeutralSeries1,
+                            color: colorMap[brand1]
+                        },
+                        {
+                            name: brand2,
+                            data: monthlyNeutralSeries2,
+                            color: colorMap[brand2]
+                        }
+                    ],
+                    chart: {
+                        type: 'line',
+                        height: '100%'
+                    },
+                    xaxis: {
+                        categories: months,
+                        title: {
+                            text: 'Year-Month'
+                        }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    stroke: {
+                        curve: 'smooth'
+                    }
+                };
+
+                const optionsLine4 = {
+                    series: [
+                        {
+                            name: brand1,
+                            data: monthlyNegativeSeries1,
+                            color: colorMap[brand1]
+                        },
+                        {
+                            name: brand2,
+                            data: monthlyNegativeSeries2,
+                            color: colorMap[brand2]
+                        }
+                    ],
+                    chart: {
+                        type: 'line',
+                        height: '100%'
+                    },
+                    xaxis: {
+                        categories: months,
+                        title: {
+                            text: 'Year-Month'
+                        }
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Number of Sentiments'
+                        }
+                    },
+                    stroke: {
+                        curve: 'smooth'
+                    }
+                };
+
+                document.getElementById('pieChart1').innerHTML = '';
+                document.getElementById('pieChart2').innerHTML = '';
+                document.getElementById('barChart1').innerHTML = '';
+                document.getElementById('barChart2').innerHTML = '';
+                document.getElementById('barChart3').innerHTML = '';
+                document.getElementById('lineChart1').innerHTML = '';
+                document.getElementById('lineChart2').innerHTML = '';
+                document.getElementById('lineChart3').innerHTML = '';
+                document.getElementById('lineChart4').innerHTML = '';
+
+                const pieChart1 = new ApexCharts(document.querySelector("#pieChart1"), optionsPie1);
+                const pieChart2 = new ApexCharts(document.querySelector("#pieChart2"), optionsPie2);
+                const barChart1 = new ApexCharts(document.querySelector("#barChart1"), optionsBar1);
+                const barChart2 = new ApexCharts(document.querySelector("#barChart2"), optionsBar2);
+                const barChart3 = new ApexCharts(document.querySelector("#barChart3"), optionsBar3);
+                const lineChart1 = new ApexCharts(document.querySelector("#lineChart1"), optionsLine1);
+                const lineChart2 = new ApexCharts(document.querySelector("#lineChart2"), optionsLine2);
+                const lineChart3 = new ApexCharts(document.querySelector("#lineChart3"), optionsLine3);
+                const lineChart4 = new ApexCharts(document.querySelector("#lineChart4"), optionsLine4);
+
+                pieChart1.render();
+                pieChart2.render();
+                barChart1.render();
+                barChart2.render();
+                barChart3.render();
+                lineChart1.render();
+                lineChart2.render();
+                lineChart3.render();
+                lineChart4.render();
+            });
+    }
+</script>
+
+</html>
