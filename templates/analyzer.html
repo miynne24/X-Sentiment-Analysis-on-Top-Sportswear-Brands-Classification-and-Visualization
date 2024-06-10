@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyzer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/d21aa4c3aa.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Assign full width inputs*/
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 40px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .fontpassword {
+            position: relative;
+        }
+
+        .fontpassword i{
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: gray;
+        }
+        @media screen and (max-width: 1024px) {
+            .desktop-only{
+               display: none;
+            }
+        }
+        .box {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            color: #4a4a4a;
+            display: block;
+            padding: 1.25rem;
+            border-width: 10px;
+        }
+        .custom-border{
+            background-color: #fff;
+            border-radius: 6px;
+            color: #4a4a4a;
+            display: inline-block;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            width: 100%;
+        }
+        .custom-bg{
+            background: rgb(211,217,220);
+            background: linear-gradient(0deg, rgba(211,217,220,1) 0%, rgba(216,104,176,1) 100%);
+        }
+        .custom-bg2{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(174,180,250,1) 100%);
+        }
+        .custom-bg3{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(226,158,159,1) 100%);
+        }
+        .custom-bg4{
+            background: rgb(235,188,160);
+            background: linear-gradient(0deg, rgba(235,188,160,1) 0%, rgba(208,166,253,1) 100%);
+        }
+        .w-100{
+            width:100%;
+        }
+        .h-100{
+            height:100%;
+        }
+        table {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          table-layout: fixed;
+        }
+
+        table caption {
+          font-size: 1.5em;
+          margin: .5em 0 .75em;
+        }
+
+        table tr {
+          border-bottom: 1px solid #ddd;
+          padding: .35em;
+        }
+
+        table th,
+        table td {
+          padding: .625em;
+        }
+
+        table th {
+          font-size: .85em;
+          letter-spacing: .1em;
+        }
+
+        @media screen and (max-width: 768px) {
+        .width-mobile{
+            width:100%;
+        }
+          table {
+            border: 2;
+          }
+
+          table caption {
+            font-size: 1.3em;
+          }
+
+          table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+          }
+
+          table tr {
+            border-bottom: 2px solid #abb1bf;
+            display: block;
+            margin-bottom: .625em;
+          }
+          table td {
+            border-bottom: 1px solid #abb1bf;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+          }
+          table td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            font-weight: 500 !important;
+          }
+
+          table td:last-child {
+            border-bottom: 0;
+          }
+        }
+        @media screen and (max-width: 1024px) {
+          .d-none{
+            display: none;
+          }
+        }
+        @media screen and (min-width: 1024px) {
+          .is-mobile-visible{
+            display: none;
+          }
+        }
+        .custom-bg-green {
+        background: linear-gradient(45deg, #4CAF50, #2E8B57);
+        }
+
+        .custom-bg-yellow {
+           background: linear-gradient(45deg, #FFFF00, #FFD700);
+        }
+
+        .custom-bg-red {
+         background: linear-gradient(45deg, #FF6347, #B22222);
+        }
+
+    </style>
+
+</head>
+<body>
+<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+</a>
+
+<div class="p-2 navbar-menu is-mobile-visible" id="navMenu" style="">
+            <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-item has-dropdown is-active">
+                <a class="">
+                    Miynne Constantine
+                  <img src="">
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="box has-text-black navbar-item p-4 m-0 is-size-7" style="background-color: #a0e4d1;;">
+                        <span class="fas fa-home pr-2"></span>
+                        <span class="is-size-7" >Dashboard</span>
+                    </a>
+                    <a href="{{url_for('adidas')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Adidas</span>
+                    </a>
+                    <a href="{{url_for('nike')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Nike</span>
+                    </a>
+                    <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                    </a>
+                    <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Categories Analysis</span>
+                    </a>
+                    <a  class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Aspects Analysis</span>
+                    </a>
+                    <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                        <span class="has-text-white" >Competitive Analysis</span>
+                    </a>
+                    <hr class="navbar-divider">
+                    <div class="navbar-item p-4">
+                        <a class="is-size-7">
+                            <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                            <span class="has-text-white" >Sign-out</span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </nav>
+        </div>
+
+<div class="columns m-0 p-0">
+    <div class="p-2 column is-2 d-none">
+        <aside class="menu">
+          <p class="menu-label">
+              <img src="">
+          </p>
+          <ul class="menu-list">
+              <li>
+                  <a href="{{url_for('intro')}}" class="box has-text-black navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-home pr-4"></span>
+                    <span class="has-text-white is-size-7" >Overview</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('dashboard')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-display pr-4"></span>
+                    <span class="has-text-white is-size-7" >Dashboard</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('adidas')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                    <span class="has-text-white is-size-7" >Adidas</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('nike')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                    <span class="has-text-white is-size-7" >Nike</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white" >Categories Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('aspanalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white" >Aspects Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                      <span class="has-text-white" >Competitive Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('twitter')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fa-brands fa-twitter pr-4"></span>
+                      <span class="has-text-white" >Tweets</span>
+                  </a>
+              </li>
+              <li>
+                  <a class="box has-text-black navbar-item p-4 m-0 is-size-7" style="background-color: #a0e4d1;;">
+                      <span class="fas fa-square-poll-vertical pr-3"></span>
+                      <span class="is-size-7" >Analyze Text</span>
+                  </a>
+              </li>
+              <hr class="navbar-divider">
+              <li>
+                  <a href="{{url_for('home')}}" class="is-size-7">
+                      <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                      <span class="has-text-white" >Sign-out</span>
+                  </a>
+              </li>
+          </ul>
+        </aside>
+    </div>
+
+    <div class="column" style="background-image: url('static/white.jpg'); background-size: cover; background-position: center;">
+    <div class="py-1 px-5 is-flex is-justify-content-end is-align-items-center">
+        <div class="p-2 has-text-centered has-text-black has-text-bold"></div>
+    </div>
+        <div class="container">
+                    <h1 class="title has-text-centered has-text-black">Sentiment Analyzer</h1>
+
+         <!-- Analyze section-->
+             <div class="card has-text-black has-text-centered">
+                 <h3>Try out our sentiment analyzer by entering your text below: </h3>
+            </div>
+                <div class="card has-text-black has-text-centered">
+                    <h1>Sentiment Analysis</h1>
+                    <form id="sentimentForm">
+                        <textarea name="text" rows="4" placeholder="Enter text here..."></textarea><br>
+                        <button type="submit">Analyze Sentiment</button>
+                    </form>
+                </div>
+        <div class="card has-text-black has-text-centered h-70">
+            <h2>Result:</h2>
+                    <div id="result"></div>
+        </div>
+        <!-- End of Analyze Section -->
+            <div class="benefits-container">
+            <h2 class="has-text-centered">Sentiment analysis benefits:</h2>
+            <div class="columns is-multiline is-mobile">
+                <div class="column is-one-quarter-desktop is-half-mobile">
+                    <div class="card benefit-card">
+                        <div class="card-content">
+                            <div class="content">
+                                👍 Quickly detect negative comments &amp; respond instantly
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter-desktop is-half-mobile">
+                    <div class="card benefit-card">
+                        <div class="card-content">
+                            <div class="content">
+                                👍 Improve response times to urgent queries by 65%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter-desktop is-half-mobile">
+                    <div class="card benefit-card">
+                        <div class="card-content">
+                            <div class="content">
+                                👍 Take on 20% higher data volume
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-quarter-desktop is-half-mobile">
+                    <div class="card benefit-card">
+                        <div class="card-content">
+                            <div class="content">
+                                👍 Monitor sentiment about your brand, product, or service in real time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
+</script>
+
+   <style>
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 20px auto;
+            color: #333;
+        }
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text color */
+            border: none; /* No border */
+            padding: 10px 20px; /* Padding around the text */
+            text-align: center; /* Centered text */
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer; /* Cursor appears as a pointer */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+        button:hover {
+            background-color: #45a049; /* Darker shade of green */
+        }
+    </style>
+
+ <script>
+   document.getElementById('sentimentForm').onsubmit = function(event) {
+    event.preventDefault();
+    var formData = new FormData(this);
+
+    var resultElement = document.getElementById('result');
+    resultElement.innerHTML = 'Analyzing...';  // Display analyzing message
+    resultElement.style.color = 'black'; // Reset to default color
+    resultElement.style.fontWeight = 'normal'; // Reset to default font weight
+
+    fetch('/analyzer', {
+        method: 'POST',
+        body: formData
+    }).then(function(response) {
+        return response.json();
+    }).then(function(data) {
+        resultElement.innerHTML = data.sentiment  + ' (Polarity: ' + data.polarity + ')';
+        resultElement.style.fontWeight = 'bold';  // Make text bold
+
+        // Change text color based on the sentiment
+        if (data.sentiment === 'Neutral') {
+            resultElement.style.color = '#CCCC00';  // A dimmer yellow
+        } else if (data.sentiment === 'Positive') {
+            resultElement.style.color = 'blue';
+        } else if (data.sentiment === 'Negative') {
+            resultElement.style.color = 'red';
+        }
+    }).catch(function(error) {
+        console.log('Request failed', error);
+        resultElement.innerHTML = 'Error analyzing sentiment';  // Display error message
+    });
+};
+
+
+    </script>
+
+<style>
+    button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s; /* Transition effect for hover */
+        cursor: pointer; /* Pointer/hand icon when hovering over button */
+        border-radius: 8px; /* Rounded corners */
+    }
+
+    button:hover {
+        background-color: #347235; /* Darker green variant */
+    }
+</style>
+<style>
+.benefit-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.benefits-container h2 {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.columns.is-multiline {
+    margin: 0 auto;
+    max-width: 1024px;
+    padding: 10px;
+}
+</style>
+</html>
