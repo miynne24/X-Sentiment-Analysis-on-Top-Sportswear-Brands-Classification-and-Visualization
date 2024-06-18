@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -483,4 +484,480 @@
             chart.render();
         });
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brands and Sportswear</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/d21aa4c3aa.js" crossorigin="anonymous"></script>
+    <style>
+        /* Assign full width inputs*/
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 40px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .fontpassword {
+            position: relative;
+        }
+
+        .fontpassword i{
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: gray;
+        }
+        @media screen and (max-width: 1024px) {
+            .desktop-only{
+               display: none;
+            }
+        }
+        .box {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            color: #4a4a4a;
+            display: block;
+            padding: 1.25rem;
+            border-width: 10px;
+        }
+        .custom-border{
+            background-color: #fff;
+            border-radius: 6px;
+            color: #4a4a4a;
+            display: inline-block;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            width: 100%;
+        }
+        .custom-bg{
+            background: rgb(211,217,220);
+            background: linear-gradient(0deg, rgba(211,217,220,1) 0%, rgba(216,104,176,1) 100%);
+        }
+        .custom-bg2{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(174,180,250,1) 100%);
+        }
+        .custom-bg3{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(226,158,159,1) 100%);
+        }
+        .custom-bg4{
+            background: rgb(235,188,160);
+            background: linear-gradient(0deg, rgba(235,188,160,1) 0%, rgba(208,166,253,1) 100%);
+        }
+        .w-100{
+            width:100%;
+        }
+        .h-100{
+            height:100%;
+        }
+        table {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          table-layout: fixed;
+        }
+
+        table caption {
+          font-size: 1.5em;
+          margin: .5em 0 .75em;
+        }
+
+        table tr {
+          border-bottom: 1px solid #ddd;
+          padding: .35em;
+        }
+
+        table th,
+        table td {
+          padding: .625em;
+        }
+
+        table th {
+          font-size: .85em;
+          letter-spacing: .1em;
+        }
+
+        @media screen and (max-width: 768px) {
+        .width-mobile{
+            width:100%;
+        }
+          table {
+            border: 2;
+          }
+
+          table caption {
+            font-size: 1.3em;
+          }
+
+          table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+          }
+
+          table tr {
+            border-bottom: 2px solid #abb1bf;
+            display: block;
+            margin-bottom: .625em;
+          }
+          table td {
+            border-bottom: 1px solid #abb1bf;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+          }
+          table td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            font-weight: 500 !important;
+          }
+
+          table td:last-child {
+            border-bottom: 0;
+          }
+        }
+        @media screen and (max-width: 1024px) {
+          .d-none{
+            display: none;
+          }
+        }
+        @media screen and (min-width: 1024px) {
+          .is-mobile-visible{
+            display: none;
+          }
+        }
+        .custom-bg-green {
+        background: linear-gradient(45deg, #4CAF50, #2E8B57);
+        }
+
+        .custom-bg-yellow {
+           background: linear-gradient(45deg, #FFFF00, #FFD700);
+        }
+
+        .custom-bg-red {
+         background: linear-gradient(45deg, #FF6347, #B22222);
+        }
+
+    </style>
+</head>
+<body>
+<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+</a>
+
+<div class="p-2 navbar-menu is-mobile-visible" id="navMenu" style="">
+            <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-item has-dropdown is-active">
+                <a class="">
+                    Miynne Constantine
+                  <img src="">
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="box has-text-black navbar-item p-4 m-0 is-size-7" style="background-color: #a0e4d1;;">
+                        <span class="fas fa-home pr-2"></span>
+                        <span class="is-size-7" >Dashboard</span>
+                    </a>
+                    <a href="{{url_for('adidas')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Adidas</span>
+                    </a>
+                    <a href="{{url_for('nike')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Nike</span>
+                    </a>
+                    <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                    </a>
+                    <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Categories Analysis</span>
+                    </a>
+                    <a  class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Aspects Analysis</span>
+                    </a>
+                    <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                        <span class="has-text-white" >Competitive Analysis</span>
+                    </a>
+                    <hr class="navbar-divider">
+                    <div class="navbar-item p-4">
+                        <a class="is-size-7">
+                            <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                            <span class="has-text-white" >Sign-out</span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </nav>
+        </div>
+
+<div class="columns m-0 p-0">
+    <div class="p-2 column is-2 d-none">
+        <aside class="menu">
+          <p class="menu-label">
+              <img src="">
+          </p>
+          <ul class="menu-list">
+              <li>
+                  <a class="box has-text-black navbar-item p-4 m-0 is-size-7" style="background-color: #a0e4d1;;">
+                    <span class="fas fa-home pr-3"></span>
+                    <span class="is-size-7" >Overview</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('dashboard')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                    <span class="has-text-white fas fa-solid fa-display pr-4"></span>
+                    <span class="has-text-white is-size-7" >Dashboard</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('adidas')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                    <span class="has-text-white is-size-7" >Adidas</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('nike')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                    <span class="has-text-white is-size-7" >Nike</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white" >Categories Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('aspanalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white" >Aspects Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                      <span class="has-text-white" >Competitive Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('twitter')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fa-brands fa-twitter pr-4"></span>
+                      <span class="has-text-white" >Tweets</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('analyzer')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                      <span class="has-text-white" >Analyze Text</span>
+                  </a>
+              </li>
+              <hr class="navbar-divider">
+              <li>
+                  <a href="{{url_for('home')}}" class="is-size-7">
+                      <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                      <span class="has-text-white" >Sign-out</span>
+                  </a>
+              </li>
+          </ul>
+        </aside>
+    </div>
+
+    <div class="column" style="background-image: url('static/white2.jpg'); background-size: cover; background-position: center;">
+    <div class="py-1 px-5 is-flex is-justify-content-end is-align-items-center">
+        <div class="p-2"></div>
+    </div>
+
+
+            <!-- Introduction Section -->
+            <div class="introduction-section p-5">
+                <div class="columns is-multiline">
+                    <div class="column is-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="static/adidaspic.jpg" alt="Adidas logo" title="Adidas"> <!-- Add source file for Adidas image here -->
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <h3>Adidas</h3>
+                                    <p>Adidas is renowned for its innovative designs and iconic footwear and apparel. Known for its collaboration with athletes and fashion icons, Adidas stands as a pillar of creativity and urban style.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="static/nikepic.jpg" alt="Nike logo" title="Nike"> <!-- Add source file for Nike image here -->
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <h3>Nike</h3>
+                                    <p>Nike, a global leader in sports equipment and apparel, champions innovation and seeks to inspire athletes worldwide with its top-tier products and groundbreaking technologies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="static/pumapic.jpg" alt="Puma logo" title="Puma"> <!-- Add source file for Puma image here -->
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <h3>Puma</h3>
+                                    <p>Puma is a major player in the sportswear market, offering stylish and comfortable sports apparel and shoes that combine high functionality with cutting edge fashion.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <!-- Introduction Section -->
+
+
+         <!-- Introduction Section -->
+            <div class="introduction-section p-5">
+                <div class="columns is-multiline">
+                    <div class="column is-12">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-5by2">
+                                    <img src="static/mensportswear.jpg" alt="Adidas logo" title="Adidas"> <!-- Add source file for Adidas image here -->
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <h3>What is Sportswear?</h3>
+                                    <p>Sportswear, also known as activewear, is clothing designed specifically for participating in physical activities and sports.
+                                        Over time, it has evolved to include garments that offer comfort, performance enhancement, and injury prevention during exercise.
+                                        The materials used in sportswear are typically breathable, moisture-wicking, and durable, providing the wearer with optimal comfort and minimal distractions due to sweat or discomfort during physical exertions.
+                                        The influence of sportswear on daily life extends beyond the gym or the playing field. It plays a crucial role in promoting a healthy lifestyle by encouraging physical activity,
+                                        which is vital for maintaining physical health and mental well-being. The comfort and practicality of sportswear have also led to its integration into everyday fashion, often referred to as "athleisure."
+                                        This trend signifies a shift in cultural norms where comfort and functionality are prioritized, alongside a growing awareness of health and fitness.
+                                        Moreover, the aesthetic appeal of sportswear has made it a fashion statement, allowing people to express their personal style while enjoying the functional benefits of the garments. As a result,
+                                        sportswear has become ubiquitous, influencing not only what people wear but also how they engage with the concept of fitness and well-being in their daily routines. This integration of sportswear
+                                        into daily life supports an active lifestyle, making the transition between different activities smoother and more stylish.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Introduction Section -->
+
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+            const options = {
+                series: [{
+                    name: 'Sentiment',
+                    data: [24420, 6230, 4030] // Updated data
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 150,
+                    toolbar: {
+                        show: false
+                    },
+                    zoom: {
+                        enabled: false
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        borderRadius: 10,
+                        borderRadiusApplication: 'end', // 'around', 'end'
+                        borderRadiusWhenStacked: 'last', // 'all', 'last'
+                        dataLabels: {
+                            total: {
+                                enabled: false,
+                                style: {
+                                    fontSize: '13px',
+                                    fontWeight: 900
+                                }
+                            }
+                        }
+                    },
+                },
+                xaxis: {
+                    categories: ['Positive', 'Neutral', 'Negative'], // Categories for sentiment types
+                },
+                yaxis: {
+                    show: false
+                },
+                fill: {
+                    opacity: 1,
+                    colors: ['#007bff', '#ffd700', '#dc3545'] // Custom colors for positive, neutral, and negative sentiments respectively
+                }
+            };
+
+            const chart = new ApexCharts(document.querySelector("#sentimentChart"), options);
+            chart.render();
+        });
+</script>
+>>>>>>> origin/main
 </html>
