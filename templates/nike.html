@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nike</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/d21aa4c3aa.js" crossorigin="anonymous"></script>
+    <style>
+        /* Assign full width inputs*/
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 40px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .fontpassword {
+            position: relative;
+        }
+
+        .fontpassword i{
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: gray;
+        }
+        @media screen and (max-width: 1024px) {
+            .desktop-only{
+               display: none;
+            }
+        }
+        .box {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            color: #4a4a4a;
+            display: block;
+            padding: 1.25rem;
+            border-width: 10px;
+        }
+        .custom-border{
+            background-color: #fff;
+            border-radius: 6px;
+            color: #4a4a4a;
+            display: inline-block;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 .5em 1em -0.125em rgba(10,10,10,.1),0 0px 0 1px rgba(10,10,10,.02);
+            width: 100%;
+        }
+        .custom-bg{
+            background: rgb(211,217,220);
+            background: linear-gradient(0deg, rgba(211,217,220,1) 0%, rgba(216,104,176,1) 100%);
+        }
+        .custom-bg2{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(174,180,250,1) 100%);
+        }
+        .custom-bg3{
+            background: rgb(221,158,97);
+            background: linear-gradient(0deg, rgba(221,158,97,1) 0%, rgba(226,158,159,1) 100%);
+        }
+        .custom-bg4{
+            background: rgb(235,188,160);
+            background: linear-gradient(0deg, rgba(235,188,160,1) 0%, rgba(208,166,253,1) 100%);
+        }
+        .w-100{
+            width:100%;
+        }
+        .h-100{
+            height:100%;
+        }
+        table {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          table-layout: fixed;
+        }
+
+        table caption {
+          font-size: 1.5em;
+          margin: .5em 0 .75em;
+        }
+
+        table tr {
+          border-bottom: 1px solid #ddd;
+          padding: .35em;
+        }
+
+        table th,
+        table td {
+          padding: .625em;
+        }
+
+        table th {
+          font-size: .85em;
+          letter-spacing: .1em;
+        }
+
+        @media screen and (max-width: 768px) {
+        .width-mobile{
+            width:100%;
+        }
+          table {
+            border: 2;
+          }
+
+          table caption {
+            font-size: 1.3em;
+          }
+
+          table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+          }
+
+          table tr {
+            border-bottom: 2px solid #abb1bf;
+            display: block;
+            margin-bottom: .625em;
+          }
+          table td {
+            border-bottom: 1px solid #abb1bf;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+          }
+          table td::before {
+            /*
+            * aria-label has no advantage, it won't be read inside a table
+            content: attr(aria-label);
+            */
+            content: attr(data-label);
+            float: left;
+            font-weight: 500 !important;
+          }
+
+          table td:last-child {
+            border-bottom: 0;
+          }
+        }
+        @media screen and (max-width: 1024px) {
+          .d-none{
+            display: none;
+          }
+        }
+        @media screen and (min-width: 1024px) {
+          .is-mobile-visible{
+            display: none;
+          }
+        }
+        .custom-bg-green {
+        background: linear-gradient(45deg, #4CAF50, #2E8B57);
+        }
+
+        .custom-bg-yellow {
+           background: linear-gradient(45deg, #FFFF00, #FFD700);
+        }
+
+        .custom-bg-red {
+         background: linear-gradient(45deg, #FF6347, #B22222);
+        }
+
+    </style>
+</head>
+<body>
+<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+</a>
+
+<div class="p-2 navbar-menu is-mobile-visible" id="navMenu" style="">
+            <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-item has-dropdown is-active">
+                <a class="">
+                    Miynne Constantine
+                  <img src="">
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a href="{{url_for('dashboard')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7">
+                        <span class="fas fa-home pr-2"></span>
+                        <span class="is-size-7" >Dashboard</span>
+                    </a>
+                    <a  class="navbar-item p-4 is-size-7" style="background-color: #a0e4d1;;">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Adidas</span>
+                    </a>
+                    <a href="{{url_for('nike')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white is-size-7" >Nike</span>
+                    </a>
+                    <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                    </a>
+                    <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Categories Analysis</span>
+                    </a>
+                    <a   href="{{url_for('aspanalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                        <span class="has-text-white" >Aspects Analysis</span>
+                    </a>
+                    <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                        <span class="has-text-white" >Competitive Analysis</span>
+                    </a>
+                    <hr class="navbar-divider">
+                    <div class="navbar-item p-4">
+                        <a class="is-size-7">
+                            <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                            <span class="has-text-white" >Sign-out</span>
+                        </a>
+                    </div>
+                </div>
+              </div>
+            </nav>
+        </div>
+
+<div class="columns m-0 p-0">
+    <div class="p-2 column is-2 d-none">
+        <aside class="menu">
+          <p class="menu-label">
+              <img src="">
+          </p>
+          <ul class="menu-list">
+              <li>
+                  <a href="{{url_for('intro')}}" class="box has-text-black navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-home pr-4"></span>
+                    <span class="has-text-white is-size-7" >Overview</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('dashboard')}}" class="navbar-item p-4 is-size-7">
+                    <span class="has-text-white fas fa-display pr-4"></span>
+                    <span class="has-text-white is-size-7" >Dashboard</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('adidas')}}" class="box has-text-black navbar-item p-4 m-0 is-size-7" >
+                    <span class="has-text-white  fas fa-regular fa-folder pr-4"></span>
+                    <span class="has-text-white is-size-7" >Adidas</span>
+                  </a>
+              </li>
+              <li>
+                  <a  class="box has-text-black navbar-item p-4 m-0 is-size-7"  style="background-color: #a0e4d1;;">
+                    <span class=" fas fa-regular fa-folder pr-3"></span>
+                    <span class=" is-size-7" >Nike</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('puma')}}" class="navbar-item p-4 is-size-7">
+                        <span class="has-text-white fas fa-regular fa-folder pr-4"></span>
+                        <span class="has-text-white" >Puma</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('catanalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white" >Categories Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-solid fa-chart-simple pr-4"></span>
+                      <span class="has-text-white" >Aspects Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('companalysis')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                      <span class="has-text-white" >Competitive Analysis</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('twitter')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fa-brands fa-twitter pr-4"></span>
+                      <span class="has-text-white" >Tweets</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{{url_for('analyzer')}}" class="navbar-item p-4 is-size-7">
+                      <span class="has-text-white fas fa-square-poll-vertical pr-4"></span>
+                      <span class="has-text-white" >Analyze Text</span>
+                  </a>
+              </li>
+              <hr class="navbar-divider">
+              <li>
+                  <a href="{{url_for('home')}}" class="is-size-7">
+                      <span class="has-text-white fas fa-arrow-right-from-bracket pr-4"></span>
+                      <span class="has-text-white" >Sign-out</span>
+                  </a>
+              </li>
+          </ul>
+        </aside>
+    </div>
+    <div class="column" style="background-image: url('static/white.jpg'); background-size: cover; background-position: center;">
+    <div class="py-1 px-5 is-flex is-justify-content-end is-align-items-center">
+        <div class="p-2" >
+        </div>
+    </div>
+    <div class="columns is-multiline m-0 p-0">
+        <div class="column is-3 has-text-centered">
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Nike: Total Count of Each Sentiment
+                </label>
+                <div class="w-100 h-100" id="nikeSentimentChart">
+                </div>
+            </div>
+        </div>
+        <div class="column is-3 has-text-centered">
+            <div class="custom-border p-3 h-100 w-100">
+                <label class="has-text-weight-semibold has-text-black">
+                    Nike: Word Clouds
+                </label>
+                <!-- Dropdown menu to select word cloud type -->
+                <div class="buttons">
+                    <div class="select">
+                        <select id="wordcloudSelect" onchange="changeWordCloud()">
+                            <option value="overall">Overall</option>
+                            <option value="positive">Positive</option>
+                            <option value="negative">Negative</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="columns m-0 p-0">
+                    <div class="column">
+                        <div class="box custom-bg w-100 h-100">
+                            <!-- Image changes based on selection -->
+                            <img id="wordcloudImage" src="static/nike_overall_wordcloud.png" alt="Nike Word Cloud" style="width: 100%; height: auto;">
+                            <p class="has-text-black is-size-7 has-text-centered has-text-weight-bold">Nike</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column is-6 has-text-centered">
+            <div class="custom-border p-3 h-50 w-100">
+                <label class="has-text-weight-semibold has-text-black">
+                   Nike: Total Sentiment on Monthly Basis
+                </label>
+                    <div id="monthlySentimentChart" style="height: 250px;"></div>
+                </div>
+        </div>
+        <div class="column is-6 has-text-centered">
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Nike: Total Sentiment on Aspects
+                </label>
+                    <div id="nike_aspectSentimentChart" class="chart-container"></div>
+
+            </div>
+        </div>
+        <div class="column is-6 has-text-centered">
+            <div class="custom-border p-3">
+                <label class="has-text-weight-semibold has-text-black">
+                    Nike: Total Sentiment on Categories
+                </label>
+                    <div id="nike_categorySentimentChart" class="chart-container"></div>
+
+            </div>
+        </div>
+        <div class="column is-6 has-text-centered">
+            <div class="custom-border p-3 h-100 w-100">
+                <label class="has-text-weight-semibold has-text-black">
+                    Nike: Total Mentioned Aspects
+                </label>
+                <div id="nike_aspectPieChart"></div>
+            </div>
+        </div>
+        <div class="column is-6 has-text-centered">
+            <div class="custom-border p-3 h-100 w-100">
+                <label class="has-text-weight-semibold has-text-black">
+                    Nike: Total Mentioned Categories
+                </label>
+                <div id="nike_categoryPieChart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const nikeSentimentData = JSON.parse('{{ nikesentiment_data | tojson | safe }}'); // Get data passed from Flask
+
+    const options = {
+        series: [{
+            name: 'Sentiment',
+            data: nikeSentimentData // Use the data from Flask
+        }],
+        chart: {
+            type: 'bar',
+            height: 350,
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                borderRadius: 10,
+                distributed: true // This ensures each bar can have a distinct color
+            }
+        },
+        xaxis: {
+            categories: ['Positive', 'Neutral', 'Negative']
+        },
+        yaxis: {
+            show: true
+        },
+        fill: {
+            opacity: 1
+        },
+        colors: ['#4CAF50', '#ffd700', '#dc3545'] // Define colors for each bar respectively
+    };
+
+    const chart = new ApexCharts(document.querySelector("#nikeSentimentChart"), options);
+    chart.render();
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const data = {{ data | tojson | safe }};
+    console.log(data);  // Check data in browser console to confirm structure
+
+    const months = data.map(item => item.created_at);
+    const positive = data.map(item => item.positive);
+    const neutral = data.map(item => item.neutral);
+    const negative = data.map(item => item.negative);
+
+    var options = {
+        series: [{
+            name: 'Positive',
+            data: positive
+        }, {
+            name: 'Neutral',
+            data: neutral
+        }, {
+            name: 'Negative',
+            data: negative
+        }],
+        chart: {
+            type: 'line',
+            height: 350
+        },
+        stroke: {
+            width: 3,
+            curve: 'smooth'
+        },
+        xaxis: {
+            categories: months,
+            title: {
+                text: 'Month'
+            }
+        },
+        yaxis: {
+            title: {
+                text: 'Number of Sentiments'
+            }
+        },
+        tooltip: {
+            shared: true,
+            intersect: false
+        },
+        fill: {
+            opacity: 1
+        },
+        colors: ['#4CAF50', '#ffd700', '#dc3545']
+    };
+
+    var chart = new ApexCharts(document.querySelector("#monthlySentimentChart"), options);
+    chart.render();
+});
+</script>
+<script>
+function changeWordCloud() {
+    var selection = document.getElementById('wordcloudSelect').value;
+    var imageElement = document.getElementById('wordcloudImage');
+    // Update the image source based on selection
+    imageElement.src = 'static/nike_' + selection + '_wordcloud.png';
+    imageElement.alt = 'Nike ' + selection.charAt(0).toUpperCase() + selection.slice(1) + ' Word Cloud';
+}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const topics = {{ topics | tojson | safe }};
+    const negative = {{ negative | tojson | safe }};
+    const neutral = {{ neutral | tojson | safe }};
+    const positive = {{ positive | tojson | safe }};
+
+    var options = {
+        series: [{
+                name: 'Positive',
+                data: positive
+            }, {
+                name: 'Neutral',
+                data: neutral
+            }, {
+                name: 'Negative',
+                data: negative
+            }],
+        chart: {
+            type: 'bar',
+            height: 400,
+            stacked: true
+        },
+        plotOptions: {
+            bar: {
+                horizontal: true
+            }
+        },
+        xaxis: {
+            categories: topics,
+            title: {
+                text: 'Sentiment Counts'
+            }
+        },
+        yaxis: {
+            title: {
+                text: 'Aspects'
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val;
+                }
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        colors: ['#4CAF50', '#FFD700', '#dc3545']
+    };
+
+    var chart = new ApexCharts(document.querySelector("#nike_aspectSentimentChart"), options);
+    chart.render();
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const categories = {{ categories | tojson | safe }};
+    const catnegative = {{ catnegative | tojson | safe }};
+    const catneutral = {{ catneutral | tojson | safe }};
+    const catpositive = {{ catpositive | tojson | safe }};
+
+    var options = {
+        series: [{
+                name: 'Positive',
+                data: catpositive
+            }, {
+                name: 'Neutral',
+                data: catneutral
+            }, {
+                name: 'Negative',
+                data: catnegative
+            }],
+        chart: {
+            type: 'bar',
+            height: 400,
+            stacked: true
+        },
+        plotOptions: {
+            bar: {
+                vertical: true
+            }
+        },
+        xaxis: {
+            categories: categories,
+            title: {
+                text: 'Category'
+            }
+
+        },
+        yaxis: {
+            title: {
+                text: 'Sentiment Counts'
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val;
+                }
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        colors: ['#4CAF50', '#FFD700', '#dc3545']
+    };
+
+    var chart = new ApexCharts(document.querySelector("#nike_categorySentimentChart"), options);
+    chart.render();
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const aspects = {{ aspects | tojson | safe }};
+    const aspectData = {{ aspect_data | tojson | safe }};
+
+    var options = {
+        series: aspectData,
+        chart: {
+            type: 'pie',
+            height: 350
+        },
+        labels: aspects,
+        legend: {
+            position: 'bottom'
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var chart = new ApexCharts(document.querySelector("#nike_aspectPieChart"), options);
+    chart.render();
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Existing code for other charts...
+
+    // New code for Category Pie Chart
+    const categories = {{ nikecategories | tojson | safe }};
+    const categoryData = {{ nikecategory_data | tojson | safe }};
+
+    var options = {
+        series: categoryData,
+        chart: {
+            type: 'pie',
+            height: 350
+        },
+        labels: categories,
+        legend: {
+            position: 'bottom'
+        },
+        colors: ['#FF4560', '#00E396', '#008FFB', '#FEB019', '#775DD0'], // Interesting and vibrant colors
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var categoryChart = new ApexCharts(document.querySelector("#nike_categoryPieChart"), options);
+    categoryChart.render();
+});
+</script>
+<style>
+    .buttons {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .buttons .select select {
+        appearance: none;
+        background-color: white;
+        color: black;
+        border: 1px solid grey;
+        padding: 0.5em 2em;
+        border-radius: 2;
+        cursor: pointer;
+        width: auto;
+    }
+
+    /* To style the select arrow */
+    .buttons .select::after {
+        border-color: black;
+    }
+</style>
+</html>
