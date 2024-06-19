@@ -1,4 +1,4 @@
-# X Sentiment Analysis on Top Sportswear Brands
+# X Sentiment Analysis on Top Sportswear Brands Using Naive Bayes: Classification and Visualization
 
 ## Application Overview
 This application performs sentiment analysis on data from X platform concerning top sportswear brands, classifying sentiments into positive, neutral, and negative polarity and visualizing the results.
