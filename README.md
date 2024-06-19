@@ -6,37 +6,37 @@ This application performs sentiment analysis on data from X platform concerning 
 ## Screenshots
 
 ### Home Page View
-![Home Page](/screenshotapplication/homepage.png)
+![Home Page](/screenshotApplication/homepage.png)
 
 ### Overview of Brands and Sportswear
-![Overview Page](/screenshotapplication/overview.png)
+![Overview Page](/screenshotApplication/overview.png)
 
 ### Overall Dashboard Summary
-![Dashboard Page](/screenshotapplication/overalldashboard.png)
+![Dashboard Page](/screenshotApplication/overalldashboard.png)
 
 ### Adidas Page
-![Adidas Page](/screenshotapplication/adidas.png)
+![Adidas Page](/screenshotApplication/adidas.png)
 
 ### Nike Page
-![Nike Page](/screenshotapplication/nike.png)
+![Nike Page](/screenshotApplication/nike.png)
 
 ### Puma Page
-![Puma Page](/screenshotapplication/puma.png)
+![Puma Page](/screenshotApplication/puma.png)
 
 ### Sportswear Categories Analysis Page
-![Categories Analysis Page](/screenshotapplication/categoryanalysis.png)
+![Categories Analysis Page](/screenshotApplication/categoryanalysis.png)
 
 ### Sportswear Aspects Analysis Page
-![Aspects Analysis Page](/screenshotapplication/aspectsanalysis.png)
+![Aspects Analysis Page](/screenshotApplication/aspectsanalysis.png)
 
 ### Competitive Sportswear Analysis Page
-![Competitive Analysis Page](/screenshotapplication/competitiveanalysis.png)
+![Competitive Analysis Page](/screenshotApplication/competitiveanalysis.png)
 
 ### Real Time Tweets From X Page
-![Tweets Page](/screenshotapplication/twitterpost.png)
+![Tweets Page](/screenshotApplication/twitterpost.png)
 
 ### Sentiment Analyzer Page
-![Sentiment Analyzer Page](/screenshotapplication/sentimentanalyzer.png)
+![Sentiment Analyzer Page](/screenshotApplication/sentimentanalyzer.png)
 
 
 ## Features
